@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.tuya.zigbee",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "compatibility": ">=5.0.0",
   "platforms": [
     "local"
@@ -94,6 +94,10 @@
       {
         "name": "Jurgen Heine",
         "email": "jurgen2.heine@gmail.com"
+      },
+      {
+        "name": "Morris Haid",
+        "email": "mhaid2016@outlook.com"
       }
     ]
   },
@@ -325,20 +329,6 @@
         "title": {
           "en": "Close",
           "de": "Schließen"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=curtain_module"
-          }
-        ]
-      },
-      {
-        "id": "move_stop",
-        "title": {
-          "en": "Stop",
-          "de": "Stoppen"
         },
         "args": [
           {
@@ -1844,7 +1834,8 @@
           "TUYATEC-7qunn4gq",
           "_TZ3000_decxrtwa",
           "_TZ3000_yxqnffam",
-          "_TZ3000_9eeavbk5"
+          "_TZ3000_9eeavbk5",
+          "_TZ3000_yxqnffam"
         ],
         "productId": [
           "RH3001",
@@ -2968,6 +2959,62 @@
       "settings": []
     },
     {
+      "id": "pir_sensor_3",
+      "name": {
+        "en": "PIR Motion Sensor (ZP06)"
+      },
+      "class": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "alarm_motion",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "images": {
+        "large": "/drivers/pir_sensor_3/assets/images/large.png",
+        "small": "/drivers/pir_sensor_3/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZ3000_hgu1dlak"
+        ],
+        "productId": [
+          "TS0202"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              1280
+            ],
+            "bindings": [
+              1,
+              1280
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/pir_sensor_3/assets/learn.svg",
+          "instruction": {
+            "en": "Press the reset button for aprox 5 seconds until the LED blinks."
+          }
+        }
+      },
+      "settings": []
+    },
+    {
       "id": "pirsensor",
       "name": {
         "en": "PIR Sensor"
@@ -3218,6 +3265,21 @@
           "value": 7,
           "min": 0,
           "max": 1500,
+          "units": {
+            "en": "seconds",
+            "nl": "seconden"
+          }
+        },
+        {
+          "id": "distance_update_interval",
+          "type": "number",
+          "label": {
+            "en": "Distance update interval",
+            "nl": "Afstand update interval"
+          },
+          "value": 10,
+          "min": 3,
+          "max": 60,
           "units": {
             "en": "seconds",
             "nl": "seconden"
@@ -8330,12 +8392,13 @@
       "title": {
         "en": "Target distance"
       },
-      "uiComponent": null,
+      "uiComponent": "sensor",
       "getable": true,
       "setable": false,
       "units": {
         "en": "m"
-      }
+      },
+      "icon": "/drivers/radar_sensor/assets/distance.svg"
     },
     "temperature_unit": {
       "type": "enum",
